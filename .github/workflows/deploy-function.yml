@@ -6,7 +6,7 @@ on:
       - main  # replace with your default branch if not 'main'
 
 env:
-  AZURE_FUNCTIONAPP_NAME: 'TBD'   # set this to your function app name on Azure
+  AZURE_FUNCTIONAPP_NAME: ${{ secrets.AZURE_FUNCTIONAPP_NAME }}   # set this to your function app name on Azure
   AZURE_FUNCTIONAPP_PACKAGE_PATH: './backend'       # set this to the path to your function app project, defaults to the repository root
   PYTHON_VERSION: '3.12'                     # set this to the python version to use (e.g. '3.6', '3.7', '3.8')
       
