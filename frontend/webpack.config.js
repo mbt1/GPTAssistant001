@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const dotenv = require('dotenv').config({path: __dirname + '/.env'});
 
 module.exports = {
-  // stats: 'verbose',
+  stats: 'verbose',
 
   entry: './src/index.tsx',
   output: {
