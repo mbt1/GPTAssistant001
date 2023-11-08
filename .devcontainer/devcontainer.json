@@ -1,0 +1,43 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+	"name": "ReactPython",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	// "image": "mcr.microsoft.com/devcontainers/python",
+	"dockerFile": "Dockerfile",
+	"remoteEnv": {
+		"ASPECIALVAR": "${localEnv:ASPECIALVAR}",
+	},	
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"./React":{},
+	},
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			"settings": {},
+			"extensions": [
+				"github.vscode-github-actions",
+				"ms-azuretools.vscode-azurefunctions",
+				"ms-python.python",
+				"redhat.vscode-yaml",
+				"ms-azuretools.vscode-docker"
+			]
+		}
+	},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "pip3 install --user -r requirements.txt",
+
+	// Use 'postStartCommand' to run commands after the container is started.
+	"postStartCommand": ["/bin/sh", "-c", "whoami && pwd && chmod 777 ./.devcontainer/postStartCommand.sh && ./.devcontainer/postStartCommand.sh"], // 
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}

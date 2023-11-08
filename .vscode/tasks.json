@@ -1,0 +1,50 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "func",
+      "label": "func: host start",
+      "command": "host start",
+      "problemMatcher": "$func-python-watch",
+      "isBackground": true,
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      }
+    },
+    {
+      "label": "Start Azure Function Locally",
+      "type": "shell",
+      "command": "func start --port 8000",
+      "options": {
+        "cwd": "${workspaceFolder}/Backend"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new"
+      },
+      "group": "build"
+    },
+    {
+      "label": "Run npm buildserve",
+      "type": "shell",
+      "command": "npm run buildserve",
+      "options": {
+        "cwd": "${workspaceFolder}/Frontend"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new"
+      },
+      "group": "build"
+    },
+    {
+      "label": "RunAll",
+      "dependsOn": ["Start Azure Functions Locally", "Run npm buildserve"],
+      "group": "build"
+    }    
+  ]
+}

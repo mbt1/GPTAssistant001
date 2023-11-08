@@ -1,0 +1,6 @@
+Flask==3.0.0
+azure-functions
+azure-keyvault-secrets
+azure-identity
+beautifulsoup4==4.12.2
+azure-ai-textanalytics
