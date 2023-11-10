@@ -6,7 +6,8 @@
 	// "image": "mcr.microsoft.com/devcontainers/python",
 	"dockerFile": "Dockerfile",
 	"remoteEnv": {
-		"ASPECIALVAR": "${localEnv:ASPECIALVAR}",
+		"GPTASSISTANT001_KEY_VAULT_NAME": null,
+		"GOOGLE_APPLICATION_CREDENTIALS": "${localEnv:GOOGLE_APPLICATION_CREDENTIALS}",
 	},	
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {

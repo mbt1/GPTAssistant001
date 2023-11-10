@@ -4,7 +4,7 @@ from azure.identity import DefaultAzureCredential
 import logging
 
 # For local development on mac use these to set the variables
-# launchctl setenv VARIABLE value
+# launchctl setenv GOOGLE_APPLICATION_CREDENTIALS value
 
 # for Azure use this in an Azure Cloud Shell
 # az account set --subscription [...]
@@ -17,6 +17,10 @@ class EnvironmentReader:
     _VARIABLE = None
     _SOMESECRET = None
     _KEY_VAULT_NAME = None
+    
+    _GOOGLE_APPLICATION_CREDENTIALS = None
+    _ENV_VARIABLE_NAME_FOR_GOOGLE_APPLICATION_CREDENTIALS = "GOOGLE_APPLICATION_CREDENTIALS"
+    _KEY_VAULT_SECRET_NAME_FOR_GOOGLE_APPLICATION_CREDENTIALS = "GOOGLE_APPLICATION_CREDENTIALS"
 
     _ENV_VARIABLE_NAME_FOR_VARIABLE = 'something'
 
@@ -24,7 +28,7 @@ class EnvironmentReader:
     _ENV_VARIABLE_NAME_FOR_SOMESECRET = 'something'
 
 
-    _ENV_VARIABLE_NAME_FOR_KEY_VAULT_NAME = 'something'
+    _ENV_VARIABLE_NAME_FOR_KEY_VAULT_NAME = 'GPTASSISTANT001_KEY_VAULT_NAME'
 
     def _get_environment_variable(self, key):
         logging.debug(f'Reading {key} from environment.')
@@ -63,6 +67,8 @@ class EnvironmentReader:
         self._VARIABLE = self._get_environment_variable(self._ENV_VARIABLE_NAME_FOR_VARIABLE)
         self._SOMESECRET = self._get_secret_locally_or_vault(self._ENV_VARIABLE_NAME_FOR_SOMESECRET, self._KEY_VAULT_SECRET_NAME_FOR_SOMESECRET)
 
+        self._GOOGLE_APPLICATION_CREDENTIALS = self._get_secret_locally_or_vault(self._ENV_VARIABLE_NAME_FOR_GOOGLE_APPLICATION_CREDENTIALS, self._KEY_VAULT_SECRET_NAME_FOR_GOOGLE_APPLICATION_CREDENTIALS)
+
     def VARIABLE(self):
         logging.debug("VARIABLE called")
         return self._VARIABLE
@@ -70,4 +76,8 @@ class EnvironmentReader:
     def SOMESECRET(self):
         logging.debug("SOMESECRET called")
         return self._SOMESECRET
+
+    def GOOGLE_APPLICATION_CREDENTIALS(self):
+        logging.debug("GOOGLE_APPLICATION_CREDENTIALS called")
+        return self._GOOGLE_APPLICATION_CREDENTIALS
     

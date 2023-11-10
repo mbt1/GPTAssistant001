@@ -1,5 +1,7 @@
 import React from 'react';
 import {useAuthToken} from "./AuthTokenContext"
+import { useMsal } from '@azure/msal-react';
+import { url } from 'inspector';
 
 const targetAPIBaseURL = process.env.REACT_APP_TARGET_API_BASE_URL;
 
@@ -13,6 +15,9 @@ interface AppProps {
 }
 
 const APIReader: React.FC<AppProps> = ({searchTerm}) => {
+  const { accounts } = useMsal();
+  const account = accounts[0]; // Assuming a single-account scenario for simplicity
+
   const [SOMETHINGs, setSOMETHINGs] = React.useState<SOMETHING[]>([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const { token: authToken, error: authError, getToken: getAuthToken } = useAuthToken();
@@ -28,9 +33,11 @@ const APIReader: React.FC<AppProps> = ({searchTerm}) => {
           }else{
             console.log('Processing SOMETHING for SearchTerm:',searchTerm)
             const encodedSearchTerm = encodeURIComponent(searchTerm);
+            const encodedUsername = encodeURIComponent(account.username);
+            const urlPath = `/api/main/?user=${encodedUsername}&search_term=${encodedSearchTerm}`;
             setIsLoading(true)
-            console.warn(`calling backend /api/main/?search_term=${encodedSearchTerm} with authToken: ${authToken}`)
-            fetch(`${targetAPIBaseURL}/api/main/?search_term=${encodedSearchTerm}`,{
+            console.warn(`calling backend ${urlPath} with authToken: ${authToken}`)
+            fetch(targetAPIBaseURL+urlPath,{
               headers: {
                 Authorization: `Bearer ${authToken}` // accessToken obtained from Azure AD B2C after successful authentication
               }
