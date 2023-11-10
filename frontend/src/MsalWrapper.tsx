@@ -5,6 +5,7 @@ import { MsalProvider } from '@azure/msal-react';
 import { msalConfig } from './authConfig';
 
 export const msalInstance = new PublicClientApplication(msalConfig);
+msalInstance.initialize();
 
 interface MsalWrapperProps {
     children: ReactNode;

@@ -4,3 +4,4 @@ azure-keyvault-secrets
 azure-identity
 beautifulsoup4==4.12.2
 azure-ai-textanalytics
+python-jose

@@ -5,7 +5,7 @@ export const msalConfig: Configuration = {
   auth: {
     clientId: '0d35788a-4819-4936-8083-963b99be79d5',
     authority: 'https://GTPAssistant001.b2clogin.com/GTPAssistant001.onmicrosoft.com/B2C_1_GPTAssistant001_login',
-    knownAuthorities: ['GTPAssistant001.b2clogin.com','https://GTPAssistant001.b2clogin.com/GTPAssistant001.onmicrosoft.com/B2C_1_GPTAssistant001_edit'],
+    knownAuthorities: ['GTPAssistant001.b2clogin.com'],
     redirectUri: window.location.origin,
   },
   cache: {
