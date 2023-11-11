@@ -64,8 +64,8 @@ class EnvironmentReader:
         logging.debug(f'This is the keyvault name: {self._KEY_VAULT_NAME}')
         logging.debug(f'This is whether we should use the keyvault : {self._use_keyvault()}')
 
-        self._VARIABLE = self._get_environment_variable(self._ENV_VARIABLE_NAME_FOR_VARIABLE)
-        self._SOMESECRET = self._get_secret_locally_or_vault(self._ENV_VARIABLE_NAME_FOR_SOMESECRET, self._KEY_VAULT_SECRET_NAME_FOR_SOMESECRET)
+        # self._VARIABLE = self._get_environment_variable(self._ENV_VARIABLE_NAME_FOR_VARIABLE)
+        # self._SOMESECRET = self._get_secret_locally_or_vault(self._ENV_VARIABLE_NAME_FOR_SOMESECRET, self._KEY_VAULT_SECRET_NAME_FOR_SOMESECRET)
 
         self._GOOGLE_APPLICATION_CREDENTIALS = self._get_secret_locally_or_vault(self._ENV_VARIABLE_NAME_FOR_GOOGLE_APPLICATION_CREDENTIALS, self._KEY_VAULT_SECRET_NAME_FOR_GOOGLE_APPLICATION_CREDENTIALS)
 
