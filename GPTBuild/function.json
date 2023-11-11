@@ -1,0 +1,33 @@
+{
+    "name": "get_weather",
+    "description": "Determine current weather at a location",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "description": "The location in one of these formats: -> Latitude and Longitude (Decimal degree) e.g: q=48.8567,2.3508 -> city name e.g.: q=Paris -> US zip e.g.: q=10001 -> UK postcode e.g: q=SW1 -> Canada postal code e.g: q=G2J -> metar:<metar code> e.g: q=metar:EGLL -> iata:<3 digit airport code> e.g: q=iata:DXB"
+        },
+        "date": {
+          "type": "string",
+          "description": "yyyy-MM-dd for the day the forecast is requested for. Should not be more than 14 days from today."
+        },
+        "duration": {
+          "type": "number",
+          "description": "the number of days the forecast is requested for. should not exceed 14 days"
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "c",
+            "f"
+          ]
+        }
+      },
+      "required": [
+        "location",
+        "date",
+        "duration"
+      ]
+    }
+  }
