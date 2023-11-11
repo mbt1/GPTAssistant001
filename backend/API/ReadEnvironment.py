@@ -79,5 +79,6 @@ class EnvironmentReader:
 
     def GOOGLE_APPLICATION_CREDENTIALS(self):
         logging.debug("GOOGLE_APPLICATION_CREDENTIALS called")
+        logging.debug(self._GOOGLE_APPLICATION_CREDENTIALS)
         return self._GOOGLE_APPLICATION_CREDENTIALS
     
